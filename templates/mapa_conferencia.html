@@ -1,0 +1,133 @@
+{% extends 'base.html' %} {% block content %}
+<form method="get" class="filter-panel">
+  <div class="filter-row">
+    <label>
+      Mês
+      <select name="month">
+        {% for month in month_options %}
+        <option
+          value="{{ month }}"
+          {%
+          if
+          month|string=""
+          ="selected_month"
+          %}selected{%
+          endif
+          %}
+        >
+          {{ month }}
+        </option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>
+      Ano
+      <select name="year">
+        {% for year in year_options %}
+        <option
+          value="{{ year }}"
+          {%
+          if
+          year|string=""
+          ="selected_year"
+          %}selected{%
+          endif
+          %}
+        >
+          {{ year }}
+        </option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>
+      Cliente
+      <select name="cliente">
+        <option value="">Todos</option>
+        {% for cliente in clientes %}
+        <option
+          value="{{ cliente }}"
+          {%
+          if
+          cliente=""
+          ="selected_cliente"
+          %}selected{%
+          endif
+          %}
+        >
+          {{ cliente }}
+        </option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>
+      Emissora
+      <select name="emissora">
+        <option value="">Todas</option>
+        {% for emissora in emissoras %}
+        <option
+          value="{{ emissora }}"
+          {%
+          if
+          emissora=""
+          ="selected_emissora"
+          %}selected{%
+          endif
+          %}
+        >
+          {{ emissora }}
+        </option>
+        {% endfor %}
+      </select>
+    </label>
+    <button type="submit" class="btn-primary">Aplicar filtro</button>
+  </div>
+</form>
+
+<div class="table-wrapper">
+  <div class="table-scroll">
+    <table class="conference-table">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Emissora</th>
+          <th>Status</th>
+          {% for day in days %}
+          <th>{{ day.weekday }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% if rows %} {% for row in rows %}
+        <tr>
+          <td>{{ row.cliente }}</td>
+          <td>{{ row.emissora }}</td>
+          <td class="status-cell">
+            <div class="status-inline">
+              <span class="status-group">
+                <span class="status-title">Programado</span>
+              </span>
+              <span class="status-group">
+                <span class="status-title">Realizado</span>
+              </span>
+            </div>
+          </td>
+          {% for day in days %}
+          <td class="day-cell {% if row.days[day.day] %}active{% endif %}">
+            <div class="day-label">
+              <span class="day-number">{{ day.day }}</span>
+            </div>
+          </td>
+          {% endfor %}
+        </tr>
+        {% endfor %} {% else %}
+        <tr>
+          <td colspan="{{ 3 + days|length }}" class="empty-state">
+            Nenhum resultado encontrado para os filtros selecionados.
+          </td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

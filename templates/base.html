@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connect Alpes</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="brand-logo-small">LOGO</div>
+      </div>
+      <div class="topbar-right">
+        <a href="#" class="topbar-pill"
+          >Política de Confidencialidade Alpes Mídia</a
+        >
+        <div class="topbar-logos">LOGO</div>
+      </div>
+    </header>
+
+    <div class="app-shell">
+      <aside class="sidebar">
+        <nav class="sidebar-menu">
+          <a
+            href="{{ url_for('mapa_conferencia') }}"
+            class="sidebar-button active"
+            id="menu-mapa"
+          >
+            <span class="sidebar-button-icon">🗺️</span>
+            <span class="sidebar-button-text">Mapa de Conferência</span>
+          </a>
+        </nav>
+      </aside>
+
+      <main class="content-area">{% block content %}{% endblock %}</main>
+    </div>
+  </body>
+</html>
