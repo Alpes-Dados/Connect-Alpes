@@ -8,7 +8,7 @@ import mysql.connector
 app = Flask(__name__, template_folder="templates", static_folder="static")
 
 DB_CONFIG = {
-    "host": os.getenv("ALPES_DB_HOST", "localhost"),
+    "host": os.getenv("ALPES_DB_HOST", "82.29.62.54"),
     "database": os.getenv("ALPES_DB_NAME", "alpes"),
     "user": os.getenv("ALPES_DB_USER", "alpesdados"),
     "password": os.getenv("ALPES_DB_PASSWORD", ""),

@@ -101,7 +101,7 @@ def is_valid_0800(value):
 def registrar_deteccao(fone, emissora, emi_cliente=None):
     try:
         conexao = mysql.connector.connect(
-            host=os.getenv('ALPES_DB_HOST', 'localhost'),
+            host=os.getenv('ALPES_DB_HOST', '82.29.62.54'),
             database=os.getenv('ALPES_DB_NAME', 'alpes'),
             user=os.getenv('ALPES_DB_USER', 'alpesdados'),
             password=os.getenv('ALPES_DB_PASSWORD', '')
@@ -181,7 +181,7 @@ def carregar_0800_dinamico():
         # Aqui abrimos a conexão com o banco para extração dos 0800
         
         conexao = mysql.connector.connect(
-            host=os.getenv('ALPES_DB_HOST', 'localhost'),
+            host=os.getenv('ALPES_DB_HOST', '82.29.62.54'),
             database=os.getenv('ALPES_DB_NAME', 'alpes'),
             user=os.getenv('ALPES_DB_USER', 'alpesdados'),
             password=os.getenv('ALPES_DB_PASSWORD', '')

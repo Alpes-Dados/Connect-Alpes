@@ -7,13 +7,7 @@
         {% for month in month_options %}
         <option
           value="{{ month }}"
-          {%
-          if
-          month|string=""
-          ="selected_month"
-          %}selected{%
-          endif
-          %}
+          {% if month|string == selected_month %}selected{% endif %}
         >
           {{ month }}
         </option>
@@ -26,13 +20,7 @@
         {% for year in year_options %}
         <option
           value="{{ year }}"
-          {%
-          if
-          year|string=""
-          ="selected_year"
-          %}selected{%
-          endif
-          %}
+          {% if year|string == selected_year %}selected{% endif %}
         >
           {{ year }}
         </option>
@@ -46,13 +34,7 @@
         {% for cliente in clientes %}
         <option
           value="{{ cliente }}"
-          {%
-          if
-          cliente=""
-          ="selected_cliente"
-          %}selected{%
-          endif
-          %}
+          {% if cliente == selected_cliente %}selected{% endif %}
         >
           {{ cliente }}
         </option>
@@ -66,13 +48,7 @@
         {% for emissora in emissoras %}
         <option
           value="{{ emissora }}"
-          {%
-          if
-          emissora=""
-          ="selected_emissora"
-          %}selected{%
-          endif
-          %}
+          {% if emissora == selected_emissora %}selected{% endif %}
         >
           {{ emissora }}
         </option>
